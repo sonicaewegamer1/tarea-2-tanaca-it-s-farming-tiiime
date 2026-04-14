@@ -95,26 +95,16 @@ namespace granjita
                         break;
 
                     case 4:
+                        foreach (var a in animales)
                         {
-                            bool recolectoAlgo = false;
-
-                            foreach (var a in animales)
+                            if (a.Listo)
                             {
-                                if (a.Listo)
-                                {
-                                    ventas.Add(new Venta(3, 40));
-                                    a.Reset();
-                                    Console.WriteLine("Recolectaste producto");
-                                    recolectoAlgo = true;
-                                }
+                                ventas.Add(new Venta(3, 40));
+                                a.Reset();
+                                Console.WriteLine("Recolectaste producto");
                             }
-
-                            if (!recolectoAlgo)
-                            {
-                                Console.WriteLine("No hay nada que recoger :c");
-                            }
-                            break;
                         }
+                        break;
 
                     case 5:
                         PasarDia();
