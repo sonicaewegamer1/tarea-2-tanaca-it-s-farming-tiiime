@@ -14,7 +14,7 @@ namespace granjita
         {
             get
             {
-                return dias <= 0;
+                return dias <= 0;//menor o igual que
             }
         }
 
