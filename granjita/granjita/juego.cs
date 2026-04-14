@@ -33,14 +33,14 @@ namespace granjita
         public Juego()
         {
             InitVariables();
-            Console.WriteLine("Bienvenido a tu granja");
+            Console.WriteLine("Bienvenido a tu granjita :D");
         }
 
         public void Run()
         {
             while (!Fin)
             {
-                Console.WriteLine("\n--- Día " + dia + " ---");
+                Console.WriteLine("\n---- Día " + dia + " ----");
                 Console.WriteLine("Dinero: " + dinero);
                 Console.WriteLine("Espacio usado: " + (cultivos.Count + animales.Count) + "/" + espacioMax);
 
