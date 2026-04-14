@@ -10,7 +10,13 @@ namespace granjita
     {
         int dias;
 
-        public bool Listo => dias <= 0;
+        public bool Listo
+        {
+            get
+            {
+                return dias <= 0;
+            }
+        }
 
         public Cultivo()
         {

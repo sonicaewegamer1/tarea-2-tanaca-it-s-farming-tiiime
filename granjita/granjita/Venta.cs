@@ -11,7 +11,13 @@ namespace granjita
         public int Dias { get; set; }
         public int Ganancia { get; set; }
 
-        public bool Listo => Dias <= 0;
+        public bool Listo
+        {
+            get
+            {
+                return Dias <= 0;
+            }
+        }
 
         public Venta(int dias, int ganancia)
         {
