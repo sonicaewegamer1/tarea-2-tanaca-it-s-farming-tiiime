@@ -6,25 +6,30 @@ using System.Threading.Tasks;
 
 namespace granjita
 {
-    internal class Animal
+    internal class Animal : SerGranja, IProducible
     {
-        int dias;
-
-        public bool Listo => dias <= 0;
-
         public Animal()
         {
-            dias = 3;
+            dias = 3; // tiempo para producir
         }
 
-        public void PasarDia()
+        public override void PasarDia()
         {
-            dias--;
+            dias--; // pasa el tiempo
+        }
+
+        public void Producir(List<Venta> ventas)
+        {
+            if (Listo) // si está listo
+            {
+                ventas.Add(new Venta(3, 40)); // genera venta
+                Reset(); // reinicia ciclo
+            }
         }
 
         public void Reset()
         {
-            dias = 3;
+            dias = 3; // vuelve a empezar
         }
     }
 }

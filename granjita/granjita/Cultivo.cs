@@ -6,26 +6,24 @@ using System.Threading.Tasks;
 
 namespace granjita
 {
-    internal class Cultivo
+    internal class Cultivo : SerGranja, IProducible // hereda + implementa 
     {
-        int dias;
-
-        public bool Listo
-        {
-            get
-            {
-                return dias <= 0;
-            }
-        }
-
         public Cultivo()
         {
-            dias = 2;
+            dias = 2; // tiempo de crecimiento
         }
 
-        public void PasarDia()
+        public override void PasarDia() // obligatorio por abstract
         {
-            dias--;
+            dias--; // reduce los días
+        }
+
+        public void Producir(List<Venta> ventas) // obligatorio por interfaz
+        {
+            if (Listo) // si ya creció
+            {
+                ventas.Add(new Venta(2, 30)); // crea venta
+            }
         }
     }
 }

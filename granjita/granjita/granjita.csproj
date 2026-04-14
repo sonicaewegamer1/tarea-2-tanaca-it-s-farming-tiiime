@@ -45,9 +45,11 @@
   <ItemGroup>
     <Compile Include="Animal.cs" />
     <Compile Include="Cultivo.cs" />
+    <Compile Include="IProducible.cs" />
     <Compile Include="juego.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerGranja.cs" />
     <Compile Include="Venta.cs" />
   </ItemGroup>
   <ItemGroup>

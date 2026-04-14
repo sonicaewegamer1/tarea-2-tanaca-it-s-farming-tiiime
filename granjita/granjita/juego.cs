@@ -66,12 +66,21 @@ namespace granjita
                         break;
 
                     case 2:
-                        // SOLO cosecha uno (detalle "humano")
-                        if (cultivos.Count > 0 && cultivos[0].Listo)
+                        if (cultivos.Count > 0)
                         {
-                            ventas.Add(new Venta(2, 30));
-                            cultivos.RemoveAt(0);
-                            Console.WriteLine("Cosechaste (se venderá en 2 días)");
+                            int antes = ventas.Count;
+                            // guardamos cuántas ventas había antes
+
+                            cultivos[0].Producir(ventas);
+                            // llama a la interfaz IProducible
+                            // no importa si es Cultivo o Animal, ambos tienen Producir()
+                         
+
+                            if (ventas.Count > antes)
+                            {
+                                cultivos.RemoveAt(0);
+                                Console.WriteLine("Cosechaste (se venderá en 2 días)");
+                            }
                         }
                         break;
 
@@ -95,16 +104,31 @@ namespace granjita
                         break;
 
                     case 4:
-                        foreach (var a in animales)
                         {
-                            if (a.Listo)
+                            bool recolectoAlgo = false;
+
+                            foreach (var a in animales)
                             {
-                                ventas.Add(new Venta(3, 40));
-                                a.Reset();
-                                Console.WriteLine("Recolectaste producto");
+                                int antes = ventas.Count;
+
+                                a.Producir(ventas);
+                                //  uso de la interfas
+                                // deja que el Animal decida si produce o no
+                               
+
+                                if (ventas.Count > antes)
+                                {
+                                    Console.WriteLine("Recolectaste producto");
+                                    recolectoAlgo = true;
+                                }
                             }
+
+                            if (!recolectoAlgo)
+                            {
+                                Console.WriteLine("No hay nada que recoger :c");
+                            }
+                            break;
                         }
-                        break;
 
                     case 5:
                         PasarDia();
@@ -123,9 +147,11 @@ namespace granjita
 
             foreach (var c in cultivos)
                 c.PasarDia();
+            // método heredado de la clase  SerGranja
 
             foreach (var a in animales)
                 a.PasarDia();
+            // es el mismo metodo pero cada clase lo usará diferente
 
             foreach (var v in ventas.ToArray())
             {
