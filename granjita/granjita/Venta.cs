@@ -15,7 +15,7 @@ namespace granjita
         {
             get
             {
-                return Dias <= 0;
+                return Dias <= 0;//menor o igual que 0
             }
         }
 
@@ -27,7 +27,7 @@ namespace granjita
 
         public void PasarDia()
         {
-            Dias--;
+            Dias--;//Dias = Dias - 1;
         }
     }
 }
